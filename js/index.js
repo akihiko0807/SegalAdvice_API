@@ -93,8 +93,8 @@ async function translateAdvice(){
 
 // 外国人音声だと漢字が発音されなかったので翻訳後の文章の漢字をひらがなに、「は」を「わ」に変える。
 async function kanaTranslate(url = 'https://labs.goo.ne.jp/api/hiragana', data={
-  // 上記URLよりappIDの取得が必要です
-  "app_id":"ENTER YOUR API KEY",
+  // 上記URLよりappIDの取得が必要です　ひとまず制限など特になさそうだったので削除せず自分のIDそのままになっております
+  "app_id":"930968fcbf5132c85712075960c9f80b4a2a862577a86c7858221f2457a52901",
   "sentence": jpText.innerHTML,
   "output_type":"hiragana"
 }){
