@@ -66,20 +66,14 @@ async function callSegal(){
 }
 
 // ランダムにアドバイスを呼び出す関数を定義。翻訳APIに回すためにPromiseを使用。
-const callAdvice = () => {
-  return new Promise((resolve, reject) => {
-    const adviceUrl = 'https://api.adviceslip.com/advice'
-    fetch(adviceUrl).then(res => res.json())
-      .then(json => {
-        console.log(json.slip.advice);
-        let advice = json.slip.advice
-        $(".advice-text").html(advice);
-        return resolve(advice)
-      }).catch(error => {
-        return reject()
-      })
-  })
-};
+async function callAdvice(){
+  const res = await fetch('https://api.adviceslip.com/advice');
+  const adviceJson = await res.json();
+  const adviceEn = adviceJson.slip.advice;
+  console.log(adviceEn)
+  $(".advice-text").html(adviceEn);
+  return adviceEn;
+}
 
 // 英語のアドバイスを日本語に翻訳する関数を定義。
 async function translateAdvice(){
