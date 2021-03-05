@@ -87,7 +87,7 @@ async function translateAdvice(){
 
 // 外国人音声だと漢字が発音されなかったので翻訳後の文章の漢字をひらがなに、「は」を「わ」に変える。
 async function kanaTranslate(url = 'https://labs.goo.ne.jp/api/hiragana', data={
-  // 上記URLよりappIDの取得が必要です　ひとまず制限など特になさそうだったので削除せず自分のIDそのままになっております
+  // 上記URLよりappIDの取得が必要です ひとまず制限など特になさそうだったので削除せず自分のIDそのままになっております
   "app_id":"930968fcbf5132c85712075960c9f80b4a2a862577a86c7858221f2457a52901",
   "sentence": jpText.innerHTML,
   "output_type":"hiragana"
@@ -131,7 +131,7 @@ startBtn.onclick = function(){
   callSegal();
   $("#segal-img-inner").removeClass("close");
   // アドバイス、翻訳、読み上げを順番に行う
-  callAdvice().then(advice => {
+  callAdvice().then(abcd => {
     translateAdvice().then(jpAdvice => {
       kanaTranslate().then(removePunc => {
         readAdvice();
@@ -158,7 +158,7 @@ function callCage(){
   return cageImg;
 }
 
-// ランダムにケイジのリアクションを呼び出す関数を定義(本当はここを自作APIでいけたらよさそう)
+// ランダムにケイジのリアクションを呼び出す関数を定義
 function cageReply(){
   let min = 1 ;
   let max = 10 ;
@@ -203,7 +203,6 @@ function readCage(){
   uttr.voice = speechSynthesis
     .getVoices()
     .filter(voice => voice.name === cageVoiceSelect.value)[0]
-    // uttr.rate = 1.2;
     // 発言を再生
   speechSynthesis.speak(uttr)
 }
